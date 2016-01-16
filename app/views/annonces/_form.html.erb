@@ -1,0 +1,52 @@
+<%= form_for(@annonce, :html => {:multipart => true}) do |f| %>
+  <% if @annonce.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@annonce.errors.count, "error") %> prohibited this annonce from being saved:</h2>
+
+      <ul>
+      <% @annonce.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :marque %><br>
+    <%= f.text_field :marque %>
+  </div>
+  <div class="field">
+    <%= f.label :modele %><br>
+    <%= f.text_field :modele %>
+  </div>
+  <div class="field">
+    <%= f.label :couleur %><br>
+    <%= f.text_field :couleur %>
+  </div>
+  <div class="field">
+    <%= f.label :model_year %><br>
+    <%= f.number_field :model_year %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :carburant %><br>
+    <%= f.text_field :carburant %>
+  </div>
+  <div class="field">
+    <%= f.label :boite_vitesse %><br>
+    <%= f.text_field :boite_vitesse %>
+  </div>
+  <div class="field">
+  <%= f.file_field :imgs, multiple: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

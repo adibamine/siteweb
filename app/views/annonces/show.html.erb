@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<p>
+<% @annonce.imgs.each do |element| %>
+<%= image_tag element.url().to_s %>
+<% end %>
+</p>
+<p>
+  <strong>Marque:</strong>
+  <%= @annonce.marque %>
+</p>
+
+<p>
+  <strong>Modele:</strong>
+  <%= @annonce.modele %>
+</p>
+
+<p>
+  <strong>Couleur:</strong>
+  <%= @annonce.couleur %>
+</p>
+
+<p>
+  <strong>Model year:</strong>
+  <%= @annonce.model_year %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @annonce.price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @annonce.description %>
+</p>
+
+<p>
+  <strong>Carburant:</strong>
+  <%= @annonce.carburant %>
+</p>
+
+<p>
+  <strong>Boite vitesse:</strong>
+  <%= @annonce.boite_vitesse %>
+</p>
+
+<%= link_to 'Edit', edit_annonce_path(@annonce) %> |
+<%= link_to 'Back', annonces_path %>
