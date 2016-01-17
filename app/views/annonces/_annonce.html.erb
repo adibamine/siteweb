@@ -1,0 +1,30 @@
+    <% @annonces.each do |annonce| %>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="well well-lg">
+          <div class="article-title"> 
+          <%= image_tag annonce.imgs[0].url(:thumb).to_s %>   
+        <%= link_to annonce.marque,annonce_path(annonce) %>
+          </div>
+        <div class="article-body">    
+        <%= truncate(annonce.description,length:100) %>
+        <div class="article-meta-details">
+        <small>Created by: <%= annonce.user.firstName %>,
+          <%= time_ago_in_words(annonce.created_at) %> ago,
+          Last updated: <%= time_ago_in_words(annonce.updated_at) %> ago</small>
+        </div>
+        </div>
+        <div class="article-actions">
+        <%= link_to "Edit", edit_annonce_path(annonce), class: "btn btn-xs btn-primary" %>
+        <%= link_to 'Delete', annonce_path(annonce), method: :delete,
+                                data: { confirm: "Etes vous sure?"},
+                                class: "btn btn-xs btn-danger" %>
+    </div>
+  </div>
+</div>
+</div>
+    <% end %>
+
+<br>
+
+<%= link_to 'New Annonce', new_annonce_path %>
