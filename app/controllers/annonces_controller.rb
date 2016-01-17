@@ -25,7 +25,7 @@ class AnnoncesController < ApplicationController
   # POST /annonces.json
   def create
     @annonce = Annonce.new(annonce_params)
-
+    @annonce.user = User.first
     respond_to do |format|
       if @annonce.save
         flash[:success] = 'Votre annonce a bien ete cree.'
