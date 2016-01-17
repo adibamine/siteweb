@@ -1,5 +1,7 @@
 class AnnoncesController < ApplicationController
   before_action :set_annonce, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /annonces
   # GET /annonces.json
@@ -25,7 +27,7 @@ class AnnoncesController < ApplicationController
   # POST /annonces.json
   def create
     @annonce = Annonce.new(annonce_params)
-    @annonce.user = User.first
+    @annonce.user = current_user
     respond_to do |format|
       if @annonce.save
         flash[:success] = 'Votre annonce a bien ete cree.'
@@ -74,4 +76,12 @@ class AnnoncesController < ApplicationController
     def annonce_params
       params.require(:annonce).permit(:marque, :modele, :couleur, :model_year, :price, :description, :carburant, :boite_vitesse, {imgs: []})
     end
+
+  def require_same_user
+    if current_user != @annonce.user
+      flash[:danger] = "You can only edit or delete your own articles"
+      redirect_to root_path
+    end
+  end
+
 end

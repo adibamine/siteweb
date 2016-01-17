@@ -14,12 +14,14 @@
           Last updated: <%= time_ago_in_words(annonce.updated_at) %> ago</small>
         </div>
         </div>
-        <div class="article-actions">
-        <%= link_to "Edit", edit_annonce_path(annonce), class: "btn btn-xs btn-primary" %>
-        <%= link_to 'Delete', annonce_path(annonce), method: :delete,
-                                data: { confirm: "Etes vous sure?"},
-                                class: "btn btn-xs btn-danger" %>
-    </div>
+          <%if logged_in? && current_user == annonce.user %>
+            <div class="article-actions">
+            <%= link_to "Edit", edit_annonce_path(annonce), class: "btn btn-xs btn-primary" %>
+            <%= link_to 'Delete', annonce_path(annonce), method: :delete,
+                                    data: { confirm: "Etes vous sure?"},
+                                    class: "btn btn-xs btn-danger" %>
+        </div>
+          <% end %>
   </div>
 </div>
 </div>

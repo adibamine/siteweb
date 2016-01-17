@@ -47,6 +47,8 @@
   <strong>Boite vitesse:</strong>
   <%= @annonce.boite_vitesse %>
 </p>
-
-<%= link_to 'Edit', edit_annonce_path(@annonce) %> |
-<%= link_to 'Back', annonces_path %>
+<% if logged_in? && current_user == @annonce.user %>
+<%= link_to 'Edit', edit_annonce_path(@annonce), class: "btn btn-xs btn-primary" %>
+<%= link_to 'Delete', annonce_path(@annonce), method: :delete,
+data: { confirm: "Etes vous sure?"}, class: "btn btn-xs btn-danger" %>
+<% end %>

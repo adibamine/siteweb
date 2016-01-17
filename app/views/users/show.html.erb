@@ -17,5 +17,3 @@
 <%= @user.firstName %>'s annonces</h4>
 <%= render 'annonce', obj: @user_annonces %>
 <%= will_paginate @user_annonces %>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
