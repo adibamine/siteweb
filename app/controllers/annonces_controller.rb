@@ -28,7 +28,8 @@ class AnnoncesController < ApplicationController
 
     respond_to do |format|
       if @annonce.save
-        format.html { redirect_to @annonce, notice: 'Annonce was successfully created.' }
+        flash[:success] = 'Votre annonce a bien ete cree.'
+        format.html { redirect_to @annonce }
         format.json { render :show, status: :created, location: @annonce }
       else
         format.html { render :new }
@@ -42,7 +43,8 @@ class AnnoncesController < ApplicationController
   def update
     respond_to do |format|
       if @annonce.update(annonce_params)
-        format.html { redirect_to @annonce, notice: 'Annonce was successfully updated.' }
+        flash[:success] = 'Votre annonce a bien ete modifiee.'
+        format.html { redirect_to @annonce }
         format.json { render :show, status: :ok, location: @annonce }
       else
         format.html { render :edit }
@@ -56,7 +58,8 @@ class AnnoncesController < ApplicationController
   def destroy
     @annonce.destroy
     respond_to do |format|
-      format.html { redirect_to annonces_url, notice: 'Annonce was successfully destroyed.' }
+      flash[:danger] = 'Votre annonce a bien ete supprime.'
+      format.html { redirect_to annonces_url }
       format.json { head :no_content }
     end
   end
