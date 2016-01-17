@@ -9,6 +9,11 @@
           </div>
         <div class="article-body">    
         <%= truncate(annonce.description,length:100) %>
+        <div class="article-meta-details">
+        <small>Created by: <%= annonce.user.firstName %>,
+          <%= time_ago_in_words(annonce.created_at) %> ago,
+          Last updated: <%= time_ago_in_words(annonce.updated_at) %> ago</small>
+        </div>
         </div>
         <div class="article-actions">
         <%= link_to "Edit", edit_annonce_path(annonce), class: "btn btn-xs btn-primary" %>
