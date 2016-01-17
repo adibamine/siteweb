@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   root 'application#index'
   get 'about' => 'application#about'
   get 'signup', to: 'users#new'
+
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
