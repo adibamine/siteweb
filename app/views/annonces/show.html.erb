@@ -1,3 +1,8 @@
+<% if @annonce.user %>
+<h1><%= link_to "#{@annonce.user.firstName} #{@annonce.user.lastName}", user_path(@annonce.user) %></h1>
+<p><%= pluralize(@annonce.user.annonces.count, "Annonce") if @annonce.user.annonces %></p>
+<p><%= "Contact: #{@annonce.user.email}" %></p>
+<% end %>
 <p>
 <% @annonce.imgs.each do |element| %>
 <%= image_tag element.url().to_s %>
